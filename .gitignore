@@ -216,3 +216,16 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# TrojAI datasets and trained models
+data/
+model/
+models/
+*.pt
+*.pth
+*.ckpt
+
+# Experiment artifacts
+outputs/
+scratch/
+*.simg
