@@ -41,7 +41,7 @@ with torch.no_grad():
         with label_path.open("r", encoding="utf-8") as label_file:
             true_label = json.load(label_file)
 
-        image_bgr = cv2.imread(str(image_path), cv2.IMREAD_COLOR)
+        image_bgr = cv2.imread(str(image_path), cv2.IMREAD_UNCHANGED)
 
         if image_bgr is None:
             raise ValueError(f"Could not read image: {image_path}")
