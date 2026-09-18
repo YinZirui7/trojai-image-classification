@@ -28,10 +28,10 @@ Completed:
 - Implemented Clean Accuracy evaluation.
 - Added a command-line argument for selecting different model directories.
 - Tested the script on `id-00000002`.
+- Verified image preprocessing against the official NIST implementation.
 
 Next steps:
 
-- Verify the image preprocessing against the official NIST implementation.
 - Evaluate additional TrojAI models when available.
 - Implement Attack Success Rate evaluation.
 - Reproduce LoRA as Oracle.
