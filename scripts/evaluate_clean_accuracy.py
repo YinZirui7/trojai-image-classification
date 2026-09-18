@@ -1,3 +1,4 @@
+import argparse
 import json
 from pathlib import Path
 
@@ -5,10 +6,18 @@ import cv2
 import torch
 
 
-MODEL_DIR = Path(
-    r"C:\Github\BSc-Thesis\trojai-example\model\id-00000002"
+parser = argparse.ArgumentParser(
+    description="Evaluate clean accuracy for a TrojAI model."
 )
+parser.add_argument(
+    "--model-dir",
+    type=Path,
+    required=True,
+    help="Directory containing model.pt and clean-example-data.",
+)
+args = parser.parse_args()
 
+MODEL_DIR = args.model_dir
 MODEL_PATH = MODEL_DIR / "model.pt"
 CLEAN_DATA_DIR = MODEL_DIR / "clean-example-data"
 
