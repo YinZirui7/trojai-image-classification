@@ -1,53 +1,94 @@
 # TrojAI Image Classification
 
-Bachelor's thesis project on Trojan/backdoor detection in pretrained image classification models.
+Bachelor's thesis project at the University of Szeged on Trojan/backdoor detection in pretrained image classification models.
 
-This project uses the NIST TrojAI Round 11 challenge:
+The project focuses on reproducing and evaluating **LoRA as Oracle** using the NIST TrojAI `image-classification-sep2022` dataset.
+
+## NIST TrojAI Challenge
 
 - Challenge: `image-classification-sep2022`
 - Task: Determine whether a pretrained image classification model contains a Trojan backdoor
 - Model architectures: ResNet-50, MobileNetV2, and ViT
-- Output: Probability that the inspected model is poisoned
+- Detector output: Probability that the inspected model is poisoned
 
 ## Research Objectives
 
 1. Understand the NIST TrojAI dataset and evaluation procedure.
-2. Reproduce a baseline or existing Trojan detection method.
-3. Evaluate the detector across different model architectures and trigger types.
-4. Explore lightweight improvements suitable for cross-architecture detection.
-5. Compare detection performance using cross-entropy, Brier score, ROC-AUC, and runtime.
+2. Implement Clean Accuracy and Attack Success Rate evaluation.
+3. Reproduce the LoRA as Oracle method.
+4. Apply LoRA as Oracle to the TrojAI `image-classification-sep2022` dataset.
+5. Analyze the threat model and compare detection performance across models and trigger types.
 
 ## Current Status
 
-The project is currently in the environment setup and official example reproduction stage.
+Completed:
+
+- Configured the local TrojAI environment.
+- Reproduced the official NIST example inference.
+- Implemented Clean Accuracy evaluation.
+- Added a command-line argument for selecting different model directories.
+- Tested the script on `id-00000002`.
+
+Next steps:
+
+- Verify the image preprocessing against the official NIST implementation.
+- Evaluate additional TrojAI models when available.
+- Implement Attack Success Rate evaluation.
+- Reproduce LoRA as Oracle.
+- Apply the method to `image-classification-sep2022`.
 
 ## Environment Setup
 
 Create the Conda environment:
 
-```bash
+```powershell
 conda env create -f environment.yml
 ```
 
 Activate the environment:
 
-```bash
+```powershell
 conda activate trojai
 ```
 
+## Clean Accuracy Evaluation
+
+Run the evaluation script from the repository root:
+
+```powershell
+python scripts/evaluate_clean_accuracy.py --model-dir "C:\path\to\model\id-XXXXXXXX"
+```
+
+The specified model directory must contain:
+
+```text
+model.pt
+clean-example-data/
+```
+
+The script loads the model on CPU, evaluates all JPG images in `clean-example-data`, reads their JSON labels, and reports the number of correct predictions and Clean Accuracy.
+
+## Current Test Result
+
+The script was tested on the clean model `id-00000002`:
+
+```text
+Correct predictions: 20/20
+Clean Accuracy: 100.00%
+```
+
+This result applies only to the 20 clean example images included with this model. It does not represent accuracy on the complete Cityscapes dataset, and Clean Accuracy alone cannot determine whether a model contains a backdoor.
+
 ## Data
 
-The NIST datasets and pretrained models are not stored in this repository because of their size.
+NIST datasets, pretrained models, and example images are not stored in this repository. They must remain outside the Git repository because of their size and licensing or distribution requirements.
 
-- [NIST Round 11 dataset documentation](https://pages.nist.gov/trojai/docs/image-classification-sep2022.html)
-- [Official NIST example implementation](https://github.com/usnistgov/trojai-example/tree/image-classification-sep2022)
+The official NIST repository is used only as a source of data and reference code.
 
 ## Hardware
 
-Small-scale development and testing can be performed on CPU. Full experiments and batch model analysis will use NVIDIA GPU resources.
+Small-scale development and evaluation can be performed locally on CPU. GPU resources may be used later for larger experiments and LoRA training.
 
 ## Author
 
 Yin Zirui
-BSc Computer Science
-University of Szeged
