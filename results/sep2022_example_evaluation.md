@@ -34,6 +34,20 @@ For `id-00000140`, the 40 poisoned examples were distributed as follows:
 - Target label 13: 20 samples
 - Target label 40: 20 samples
 
+## Validation Notes
+
+### Poisoned-label semantics
+
+For the six locally available poisoned models (`id-00000140`, `id-00000141`, `id-00000142`, `id-00000146`, `id-00000148`, and `id-00000149`), the unique integer labels stored in `poisoned-example-data` JSON files matched the `target_class` values recorded in each model's `config.json`.
+
+This supports interpreting the poisoned-example JSON integer as the attack target label for the inspected local models. It does not by itself establish that every TrojAI model or dataset split uses the same structure.
+
+### Image preprocessing
+
+The preprocessing implementation was compared with `example_trojan_detector.py` from the official `trojai-example` repository. Both implementations perform OpenCV image loading, BGR-to-RGB conversion, HWC-to-CHW conversion, conversion from `uint8` values to floating-point values in `[0, 1]`, and addition of the batch dimension.
+
+The official example uses `torchvision.transforms.ConvertImageDtype(torch.float)`, while the local evaluation scripts use `float32 / 255.0`. No additional resize or mean/standard-deviation normalization was present in the inspected official inference path.
+
 ## Interpretation Limitations
 
 A result of 100% does not by itself prove that the evaluation implementation is completely correct.
