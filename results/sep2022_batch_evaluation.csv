@@ -1,0 +1,11 @@
+model,poisoned,architecture,num_triggers,model_status,model_error,clean_status,clean_correct,clean_total,clean_accuracy,clean_error,asr_status,asr_success,asr_total,attack_success_rate,target_statistics,asr_error
+id-00000140,True,classification:mobilenet_v2,2,success,,success,20,20,1.0,,success,40,40,1.0,"{""13"": {""success"": 20, ""total"": 20}, ""40"": {""success"": 20, ""total"": 20}}",
+id-00000141,True,classification:vit_base_patch32_224,1,success,,success,20,20,1.0,,success,20,20,1.0,"{""1"": {""success"": 20, ""total"": 20}}",
+id-00000142,True,classification:mobilenet_v2,2,success,,success,20,20,1.0,,success,40,40,1.0,"{""20"": {""success"": 20, ""total"": 20}, ""40"": {""success"": 20, ""total"": 20}}",
+id-00000143,False,classification:mobilenet_v2,4,success,,success,20,20,1.0,,not_applicable,,,,,
+id-00000144,False,classification:resnet50,1,success,,success,20,20,1.0,,not_applicable,,,,,
+id-00000145,False,classification:resnet50,2,success,,success,20,20,1.0,,not_applicable,,,,,
+id-00000146,True,classification:mobilenet_v2,2,success,,success,20,20,1.0,,success,31,31,1.0,"{""8"": {""success"": 11, ""total"": 11}, ""16"": {""success"": 20, ""total"": 20}}",
+id-00000147,False,classification:vit_base_patch32_224,2,success,,success,20,20,1.0,,not_applicable,,,,,
+id-00000148,True,classification:resnet50,2,success,,success,20,20,1.0,,success,40,40,1.0,"{""45"": {""success"": 20, ""total"": 20}, ""84"": {""success"": 20, ""total"": 20}}",
+id-00000149,True,classification:mobilenet_v2,4,success,,success,20,20,1.0,,success,80,80,1.0,"{""2"": {""success"": 20, ""total"": 20}, ""3"": {""success"": 20, ""total"": 20}, ""5"": {""success"": 20, ""total"": 20}, ""26"": {""success"": 20, ""total"": 20}}",

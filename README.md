@@ -31,13 +31,13 @@ Completed:
 - Tested the evaluation scripts on locally available sep2022 models.
 - Verified that the image preprocessing used by the scripts matches the inspected official NIST example implementation.
 - Recorded example-image evaluation results for models `id-00000140` through `id-00000149`.
+- Implemented batch evaluation across multiple model directories.
+- Added CSV output with separate status fields for successful, not applicable, missing-data, and failed evaluations.
 
 Planned:
 
 - Further verify preprocessing requirements across model architectures.
 - Further verify poisoned-example JSON label semantics.
-- Implement batch evaluation across multiple model directories.
-- Save batch evaluation results to structured output files.
 - Reproduce LoRA as Oracle.
 - Adapt LoRA as Oracle to `image-classification-sep2022`.
 
